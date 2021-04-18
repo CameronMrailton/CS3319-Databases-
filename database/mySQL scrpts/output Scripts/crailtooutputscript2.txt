@@ -1,0 +1,539 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SELECT * FROM universities
+--------------
+
++--------------+--------------------------------+----------+---------------+----------+
+| uniqueNumber | officialName                   | nickName | city          | province |
++--------------+--------------------------------+----------+---------------+----------+
+|            0 |                                |          |               |          |
+|            2 | University Of Toronto          | UofT     | Toronto       | ON       |
+|            4 | University of Waterloo         | Waterloo | Waterloo      | ON       |
+|            5 | University of Brock            | Brock    | Niagara falls | ON       |
+|           24 | Concordia University           | Concord  | Montreal      | QB       |
+|           55 | McMaster University            | Mac      | Hamilton      | ON       |
+|           66 | University of British Columbia | UBC      | Vancouver     | BC       |
+|           77 | Wilfred Laurier University     | Laurier  | Waterloo      | ON       |
+|           88 | McGill University              | McGill   | Montreal      | QB       |
++--------------+--------------------------------+----------+---------------+----------+
+9 rows in set (0.00 sec)
+
+--------------
+LOAD DATA LOCAL INFILE '/home/centos/myrepo/assignment2/universities.txt' INTO TABLE universities
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+--------------
+
+Query OK, 0 rows affected, 5 warnings (0.00 sec)
+Records: 7  Deleted: 0  Skipped: 7  Warnings: 5
+
+ERROR 1064 (42000) at line 10: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'uniqueNumber, officialName, city, province, nickName)' at line 1
+--------------
+(uniqueNumber, officialName, city, province, nickName)
+--------------
+
+--------------
+SELECT * FROM universities
+--------------
+
++--------------+--------------------------------+----------+---------------+----------+
+| uniqueNumber | officialName                   | nickName | city          | province |
++--------------+--------------------------------+----------+---------------+----------+
+|            0 |                                |          |               |          |
+|            2 | University Of Toronto          | UofT     | Toronto       | ON       |
+|            4 | University of Waterloo         | Waterloo | Waterloo      | ON       |
+|            5 | University of Brock            | Brock    | Niagara falls | ON       |
+|           24 | Concordia University           | Concord  | Montreal      | QB       |
+|           55 | McMaster University            | Mac      | Hamilton      | ON       |
+|           66 | University of British Columbia | UBC      | Vancouver     | BC       |
+|           77 | Wilfred Laurier University     | Laurier  | Waterloo      | ON       |
+|           88 | McGill University              | McGill   | Montreal      | QB       |
++--------------+--------------------------------+----------+---------------+----------+
+9 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM WesternCourses
+--------------
+
++--------------+---------------------------------------------+--------------+--------------+
+| courseNumber | courseName                                  | courseWeight | courseSuffix |
++--------------+---------------------------------------------+--------------+--------------+
+| cs0020       | Intro to Coding using Pascal and Fortran    | 1.0          |              |
+| cs1026       | Computer Science Fundamentals I             | 0.5          | A/B          |
+| cs1027       | Computer Science Fundamentals II            | 0.5          | A/B          |
+| cs2120       | Modern Survival Skills I: Coding Essentials | 0.5          | A/B          |
+| cs2210       | Algorithms and Data Structures              | 1.0          | A/B          |
+| cs3319       | Databases I                                 | 0.5          | A/B          |
+| cs4455       | Stock market analysis with coding           | 0.5          | A/B          |
+| cs4490       | Thesis                                      | 0.5          | Z            |
++--------------+---------------------------------------------+--------------+--------------+
+8 rows in set (0.00 sec)
+
+ERROR 1062 (23000) at line 15: Duplicate entry 'cs1026' for key 'PRIMARY'
+ERROR 1062 (23000) at line 16: Duplicate entry 'cs1027' for key 'PRIMARY'
+ERROR 1062 (23000) at line 17: Duplicate entry 'cs2210' for key 'PRIMARY'
+ERROR 1062 (23000) at line 18: Duplicate entry 'cs3319' for key 'PRIMARY'
+ERROR 1062 (23000) at line 19: Duplicate entry 'cs2120' for key 'PRIMARY'
+ERROR 1062 (23000) at line 20: Duplicate entry 'cs4490' for key 'PRIMARY'
+ERROR 1062 (23000) at line 21: Duplicate entry 'cs0020' for key 'PRIMARY'
+ERROR 1062 (23000) at line 22: Duplicate entry 'cs4455' for key 'PRIMARY'
+--------------
+INSERT INTO WesternCourses VALUES ("cs1026", "Computer Science Fundamentals I", "0.5","A/B")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs1027","Computer Science Fundamentals II", "0.5", "A/B")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs2210", "Algorithms and Data Structures", "1.0", "A/B")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs3319", "Databases I","0.5", "A/B")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs2120", "Modern Survival Skills I: Coding Essentials", "0.5","A/B")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs4490", "Thesis", "0.5", "Z")
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs0020", "Intro to Coding using Pascal and Fortran", "1.0", "" )
+--------------
+
+--------------
+INSERT INTO WesternCourses VALUES ("cs4455", "Stock market analysis with coding","0.5", "A/B")
+--------------
+
+--------------
+SELECT * FROM WesternCourses
+--------------
+
++--------------+---------------------------------------------+--------------+--------------+
+| courseNumber | courseName                                  | courseWeight | courseSuffix |
++--------------+---------------------------------------------+--------------+--------------+
+| cs0020       | Intro to Coding using Pascal and Fortran    | 1.0          |              |
+| cs1026       | Computer Science Fundamentals I             | 0.5          | A/B          |
+| cs1027       | Computer Science Fundamentals II            | 0.5          | A/B          |
+| cs2120       | Modern Survival Skills I: Coding Essentials | 0.5          | A/B          |
+| cs2210       | Algorithms and Data Structures              | 1.0          | A/B          |
+| cs3319       | Databases I                                 | 0.5          | A/B          |
+| cs4455       | Stock market analysis with coding           | 0.5          | A/B          |
+| cs4490       | Thesis                                      | 0.5          | Z            |
++--------------+---------------------------------------------+--------------+--------------+
+8 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM universities
+--------------
+
++--------------+--------------------------------+----------+---------------+----------+
+| uniqueNumber | officialName                   | nickName | city          | province |
++--------------+--------------------------------+----------+---------------+----------+
+|            0 |                                |          |               |          |
+|            2 | University Of Toronto          | UofT     | Toronto       | ON       |
+|            4 | University of Waterloo         | Waterloo | Waterloo      | ON       |
+|            5 | University of Brock            | Brock    | Niagara falls | ON       |
+|           24 | Concordia University           | Concord  | Montreal      | QB       |
+|           55 | McMaster University            | Mac      | Hamilton      | ON       |
+|           66 | University of British Columbia | UBC      | Vancouver     | BC       |
+|           77 | Wilfred Laurier University     | Laurier  | Waterloo      | ON       |
+|           88 | McGill University              | McGill   | Montreal      | QB       |
++--------------+--------------------------------+----------+---------------+----------+
+9 rows in set (0.00 sec)
+
+ERROR 1062 (23000) at line 27: Duplicate entry '5' for key 'PRIMARY'
+--------------
+INSERT INTO universities VALUES (5, "University of Brock", "Brock","Niagara falls", "ON")
+--------------
+
+--------------
+SELECT * FROM universities
+--------------
+
++--------------+--------------------------------+----------+---------------+----------+
+| uniqueNumber | officialName                   | nickName | city          | province |
++--------------+--------------------------------+----------+---------------+----------+
+|            0 |                                |          |               |          |
+|            2 | University Of Toronto          | UofT     | Toronto       | ON       |
+|            4 | University of Waterloo         | Waterloo | Waterloo      | ON       |
+|            5 | University of Brock            | Brock    | Niagara falls | ON       |
+|           24 | Concordia University           | Concord  | Montreal      | QB       |
+|           55 | McMaster University            | Mac      | Hamilton      | ON       |
+|           66 | University of British Columbia | UBC      | Vancouver     | BC       |
+|           77 | Wilfred Laurier University     | Laurier  | Waterloo      | ON       |
+|           88 | McGill University              | McGill   | Montreal      | QB       |
++--------------+--------------------------------+----------+---------------+----------+
+9 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM OutsideCourses
+--------------
+
++------------+---------------------------------------+------------+--------------+--------------+
+| code       | courseName                            | courseYear | courseWeight | uniqueNumber |
++------------+---------------------------------------+------------+--------------+--------------+
+| CompSci011 | Intro to Computer Science             | 1          | 0.5          |            4 |
+| CompSci021 | Packages                              | 1          | 0.5          |            2 |
+| CompSci021 | Intro Programming                     | 1          | 1.0          |           66 |
+| CompSci022 | Intro to programing                   | 1          | 0.5          |            2 |
+| CompSci022 | Advanced Programming                  | 1          | 0.5          |           66 |
+| CompSci022 | Using Packages                        | 1          | 0.5          |           77 |
+| CompSci023 | Advanced Programming                  | 1          | 0.5          |            2 |
+| CompSci033 | Intro to Programming for Med students | 1          | 0.5          |            2 |
+| CompSci101 | Introduction to Using Data Structures | 1          | 0.5          |           77 |
+| CompSci111 | intro to machine learning             | 1          | 1.0          |            5 |
+| CompSci123 | Using Unix                            | 2          | 0.5          |            4 |
+| CompSci222 | Introduction to Databases             | 1          | 1.0          |            2 |
+| CompSci319 | Using Databases                       | 3          | 0.5          |           66 |
+| CompSci333 | Graphics                              | 3          | 0.5          |           55 |
+| CompSci444 | Networks                              | 4          | 0.5          |           55 |
+| CompSci999 | Programing                            | 1          | 0.5          |            5 |
++------------+---------------------------------------+------------+--------------+--------------+
+16 rows in set (0.00 sec)
+
+ERROR 1062 (23000) at line 33: Duplicate entry 'CompSci022-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 34: Duplicate entry 'CompSci033-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 35: Duplicate entry 'CompSci021-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 36: Duplicate entry 'CompSci022-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 37: Duplicate entry 'CompSci222-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 38: Duplicate entry 'CompSci023-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 41: Duplicate entry 'CompSci011-4' for key 'PRIMARY'
+ERROR 1062 (23000) at line 42: Duplicate entry 'CompSci123-4' for key 'PRIMARY'
+ERROR 1062 (23000) at line 44: Duplicate entry 'CompSci021-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 45: Duplicate entry 'CompSci022-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 46: Duplicate entry 'CompSci319-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 49: Duplicate entry 'CompSci333-55' for key 'PRIMARY'
+ERROR 1062 (23000) at line 50: Duplicate entry 'CompSci444-55' for key 'PRIMARY'
+ERROR 1062 (23000) at line 52: Duplicate entry 'CompSci022-77' for key 'PRIMARY'
+ERROR 1062 (23000) at line 53: Duplicate entry 'CompSci101-77' for key 'PRIMARY'
+ERROR 1062 (23000) at line 55: Duplicate entry 'CompSci111-5' for key 'PRIMARY'
+ERROR 1062 (23000) at line 56: Duplicate entry 'CompSci999-5' for key 'PRIMARY'
+--------------
+INSERT INTO OutsideCourses Values("CompSci022", "Intro to programing", 1, "0.5",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci033", "Intro to Programming for Med students", 3, "0.5",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci021", "Packages", 1, "0.5",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci022", "intro to programing", 1, "0.5",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci222", "Introduction to Databases", 2, "1.0",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci023", "Advanced Programming", 1, "0.5",2)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci011", "Intro to Computer Science", 2, "0.5",4)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci123", "Using Unix", 2, "0.5",4)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci021", "Intro Programming", 1, "1.0",66)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci022", "Advanced Programming", 1, "0.5",66)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci319", "Using Databases", 3, "0.5",66)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci333", "Graphics", 3, "0.5",55)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci444", "Networks", 4, "0.5",55)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci022", "Using Packages", 1, "0.5",77)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci101", "Introduction to Using Data Structures", 2, "0.5",77)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci111", "intro to machine learning", 2, "1.0",5)
+--------------
+
+--------------
+INSERT INTO OutsideCourses Values("CompSci999", "Programing", 1, "0.5",5)
+--------------
+
+--------------
+SELECT * FROM OutsideCourses
+--------------
+
++------------+---------------------------------------+------------+--------------+--------------+
+| code       | courseName                            | courseYear | courseWeight | uniqueNumber |
++------------+---------------------------------------+------------+--------------+--------------+
+| CompSci011 | Intro to Computer Science             | 1          | 0.5          |            4 |
+| CompSci021 | Packages                              | 1          | 0.5          |            2 |
+| CompSci021 | Intro Programming                     | 1          | 1.0          |           66 |
+| CompSci022 | Intro to programing                   | 1          | 0.5          |            2 |
+| CompSci022 | Advanced Programming                  | 1          | 0.5          |           66 |
+| CompSci022 | Using Packages                        | 1          | 0.5          |           77 |
+| CompSci023 | Advanced Programming                  | 1          | 0.5          |            2 |
+| CompSci033 | Intro to Programming for Med students | 1          | 0.5          |            2 |
+| CompSci101 | Introduction to Using Data Structures | 1          | 0.5          |           77 |
+| CompSci111 | intro to machine learning             | 1          | 1.0          |            5 |
+| CompSci123 | Using Unix                            | 2          | 0.5          |            4 |
+| CompSci222 | Introduction to Databases             | 1          | 1.0          |            2 |
+| CompSci319 | Using Databases                       | 3          | 0.5          |           66 |
+| CompSci333 | Graphics                              | 3          | 0.5          |           55 |
+| CompSci444 | Networks                              | 4          | 0.5          |           55 |
+| CompSci999 | Programing                            | 1          | 0.5          |            5 |
++------------+---------------------------------------+------------+--------------+--------------+
+16 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM Equivalent
+--------------
+
++--------------+------------+--------------+----------------+
+| courseNumber | code       | uniqueNumber | equivalentDate |
++--------------+------------+--------------+----------------+
+| cs0020       | CompSci022 |            2 | 1999-09-17     |
+| cs1026       | CompSci011 |            4 | 1997-02-09     |
+| cs1026       | CompSci021 |           66 | 2010-01-12     |
+| cs1026       | CompSci022 |            2 | 2015-05-12     |
+| cs1026       | CompSci033 |            2 | 2013-01-02     |
+| cs1027       | CompSci022 |           66 | 2019-09-01     |
+| cs1027       | CompSci023 |            2 | 2017-06-22     |
+| cs2120       | CompSci022 |            2 | 2018-12-10     |
+| cs2210       | CompSci101 |           77 | 1998-07-12     |
+| cs3319       | CompSci222 |            2 | 1990-09-13     |
+| cs3319       | CompSci319 |           66 | 1987-09-21     |
++--------------+------------+--------------+----------------+
+11 rows in set (0.00 sec)
+
+ERROR 1062 (23000) at line 62: Duplicate entry 'cs1026-CompSci022-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 63: Duplicate entry 'cs1026-CompSci033-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 64: Duplicate entry 'cs1026-CompSci011-4' for key 'PRIMARY'
+ERROR 1062 (23000) at line 65: Duplicate entry 'cs1026-CompSci021-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 66: Duplicate entry 'cs1027-CompSci023-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 67: Duplicate entry 'cs1027-CompSci022-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 68: Duplicate entry 'cs2210-CompSci101-77' for key 'PRIMARY'
+ERROR 1062 (23000) at line 69: Duplicate entry 'cs3319-CompSci222-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 70: Duplicate entry 'cs3319-CompSci319-66' for key 'PRIMARY'
+ERROR 1062 (23000) at line 71: Duplicate entry 'cs2120-CompSci022-2' for key 'PRIMARY'
+ERROR 1062 (23000) at line 72: Duplicate entry 'cs0020-CompSci022-2' for key 'PRIMARY'
+--------------
+INSERT INTO Equivalent Values("cs1026", "CompSci022", 2, "2015-05-12")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs1026", "CompSci033", 2, "2013-01-02")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs1026", "CompSci011", 4, "1997-02-09")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs1026", "CompSci021", 66, "2010-01-12")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs1027", "CompSci023", 2, "2017-06-22")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs1027", "CompSci022", 66, "2019-09-01")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs2210", "CompSci101", 77, "1998-07-12")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs3319", "CompSci222", 2, "1990-09-13")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs3319", "CompSci319", 66, "1987-09-21")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs2120", "CompSci022", 2, "2018-12-10")
+--------------
+
+--------------
+INSERT INTO Equivalent Values("cs0020", "CompSci022", 2, "1999-09-17")
+--------------
+
+--------------
+SELECT * FROM Equivalent
+--------------
+
++--------------+------------+--------------+----------------+
+| courseNumber | code       | uniqueNumber | equivalentDate |
++--------------+------------+--------------+----------------+
+| cs0020       | CompSci022 |            2 | 1999-09-17     |
+| cs1026       | CompSci011 |            4 | 1997-02-09     |
+| cs1026       | CompSci021 |           66 | 2010-01-12     |
+| cs1026       | CompSci022 |            2 | 2015-05-12     |
+| cs1026       | CompSci033 |            2 | 2013-01-02     |
+| cs1027       | CompSci022 |           66 | 2019-09-01     |
+| cs1027       | CompSci023 |            2 | 2017-06-22     |
+| cs2120       | CompSci022 |            2 | 2018-12-10     |
+| cs2210       | CompSci101 |           77 | 1998-07-12     |
+| cs3319       | CompSci222 |            2 | 1990-09-13     |
+| cs3319       | CompSci319 |           66 | 1987-09-21     |
++--------------+------------+--------------+----------------+
+11 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM Equivalent
+--------------
+
++--------------+------------+--------------+----------------+
+| courseNumber | code       | uniqueNumber | equivalentDate |
++--------------+------------+--------------+----------------+
+| cs0020       | CompSci022 |            2 | 1999-09-17     |
+| cs1026       | CompSci011 |            4 | 1997-02-09     |
+| cs1026       | CompSci021 |           66 | 2010-01-12     |
+| cs1026       | CompSci022 |            2 | 2015-05-12     |
+| cs1026       | CompSci033 |            2 | 2013-01-02     |
+| cs1027       | CompSci022 |           66 | 2019-09-01     |
+| cs1027       | CompSci023 |            2 | 2017-06-22     |
+| cs2120       | CompSci022 |            2 | 2018-12-10     |
+| cs2210       | CompSci101 |           77 | 1998-07-12     |
+| cs3319       | CompSci222 |            2 | 1990-09-13     |
+| cs3319       | CompSci319 |           66 | 1987-09-21     |
++--------------+------------+--------------+----------------+
+11 rows in set (0.00 sec)
+
+ERROR 1292 (22007) at line 78: Incorrect date value: 'Sep 19, 2018' for column 'equivalentDate' at row 1
+--------------
+UPDATE Equivalent SET EquivalentDate = "Sep 19, 2018" WHERE courseNumber="cs0020"
+--------------
+
+--------------
+SELECT * FROM Equivalent
+--------------
+
++--------------+------------+--------------+----------------+
+| courseNumber | code       | uniqueNumber | equivalentDate |
++--------------+------------+--------------+----------------+
+| cs0020       | CompSci022 |            2 | 1999-09-17     |
+| cs1026       | CompSci011 |            4 | 1997-02-09     |
+| cs1026       | CompSci021 |           66 | 2010-01-12     |
+| cs1026       | CompSci022 |            2 | 2015-05-12     |
+| cs1026       | CompSci033 |            2 | 2013-01-02     |
+| cs1027       | CompSci022 |           66 | 2019-09-01     |
+| cs1027       | CompSci023 |            2 | 2017-06-22     |
+| cs2120       | CompSci022 |            2 | 2018-12-10     |
+| cs2210       | CompSci101 |           77 | 1998-07-12     |
+| cs3319       | CompSci222 |            2 | 1990-09-13     |
+| cs3319       | CompSci319 |           66 | 1987-09-21     |
++--------------+------------+--------------+----------------+
+11 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM universities
+--------------
+
++--------------+--------------------------------+----------+---------------+----------+
+| uniqueNumber | officialName                   | nickName | city          | province |
++--------------+--------------------------------+----------+---------------+----------+
+|            0 |                                |          |               |          |
+|            2 | University Of Toronto          | UofT     | Toronto       | ON       |
+|            4 | University of Waterloo         | Waterloo | Waterloo      | ON       |
+|            5 | University of Brock            | Brock    | Niagara falls | ON       |
+|           24 | Concordia University           | Concord  | Montreal      | QB       |
+|           55 | McMaster University            | Mac      | Hamilton      | ON       |
+|           66 | University of British Columbia | UBC      | Vancouver     | BC       |
+|           77 | Wilfred Laurier University     | Laurier  | Waterloo      | ON       |
+|           88 | McGill University              | McGill   | Montreal      | QB       |
++--------------+--------------------------------+----------+---------------+----------+
+9 rows in set (0.00 sec)
+
+ERROR 1054 (42S22) at line 84: Unknown column 'courseNumber' in 'where clause'
+--------------
+UPDATE universities SET year = "Sep 19, 2018" WHERE courseNumber="cs0020"
+--------------
+
+--------------
+SELECT * FROM OutsideCourses
+--------------
+
++------------+---------------------------------------+------------+--------------+--------------+
+| code       | courseName                            | courseYear | courseWeight | uniqueNumber |
++------------+---------------------------------------+------------+--------------+--------------+
+| CompSci011 | Intro to Computer Science             | 1          | 0.5          |            4 |
+| CompSci021 | Packages                              | 1          | 0.5          |            2 |
+| CompSci021 | Intro Programming                     | 1          | 1.0          |           66 |
+| CompSci022 | Intro to programing                   | 1          | 0.5          |            2 |
+| CompSci022 | Advanced Programming                  | 1          | 0.5          |           66 |
+| CompSci022 | Using Packages                        | 1          | 0.5          |           77 |
+| CompSci023 | Advanced Programming                  | 1          | 0.5          |            2 |
+| CompSci033 | Intro to Programming for Med students | 1          | 0.5          |            2 |
+| CompSci101 | Introduction to Using Data Structures | 1          | 0.5          |           77 |
+| CompSci111 | intro to machine learning             | 1          | 1.0          |            5 |
+| CompSci123 | Using Unix                            | 2          | 0.5          |            4 |
+| CompSci222 | Introduction to Databases             | 1          | 1.0          |            2 |
+| CompSci319 | Using Databases                       | 3          | 0.5          |           66 |
+| CompSci333 | Graphics                              | 3          | 0.5          |           55 |
+| CompSci444 | Networks                              | 4          | 0.5          |           55 |
+| CompSci999 | Programing                            | 1          | 0.5          |            5 |
++------------+---------------------------------------+------------+--------------+--------------+
+16 rows in set (0.00 sec)
+
+--------------
+UPDATE OutsideCourses SET courseYear = 1 WHERE courseName Like 'Intro%'
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 7  Changed: 0  Warnings: 0
+
+--------------
+SELECT * FROM OutsideCourses
+--------------
+
++------------+---------------------------------------+------------+--------------+--------------+
+| code       | courseName                            | courseYear | courseWeight | uniqueNumber |
++------------+---------------------------------------+------------+--------------+--------------+
+| CompSci011 | Intro to Computer Science             | 1          | 0.5          |            4 |
+| CompSci021 | Packages                              | 1          | 0.5          |            2 |
+| CompSci021 | Intro Programming                     | 1          | 1.0          |           66 |
+| CompSci022 | Intro to programing                   | 1          | 0.5          |            2 |
+| CompSci022 | Advanced Programming                  | 1          | 0.5          |           66 |
+| CompSci022 | Using Packages                        | 1          | 0.5          |           77 |
+| CompSci023 | Advanced Programming                  | 1          | 0.5          |            2 |
+| CompSci033 | Intro to Programming for Med students | 1          | 0.5          |            2 |
+| CompSci101 | Introduction to Using Data Structures | 1          | 0.5          |           77 |
+| CompSci111 | intro to machine learning             | 1          | 1.0          |            5 |
+| CompSci123 | Using Unix                            | 2          | 0.5          |            4 |
+| CompSci222 | Introduction to Databases             | 1          | 1.0          |            2 |
+| CompSci319 | Using Databases                       | 3          | 0.5          |           66 |
+| CompSci333 | Graphics                              | 3          | 0.5          |           55 |
+| CompSci444 | Networks                              | 4          | 0.5          |           55 |
+| CompSci999 | Programing                            | 1          | 0.5          |            5 |
++------------+---------------------------------------+------------+--------------+--------------+
+16 rows in set (0.00 sec)
+
+Bye

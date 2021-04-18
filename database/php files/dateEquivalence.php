@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>date equivalence</title>
+</head>
+<h1>All equivalencies made before and including this date:</h1>
+<body>
+<?php
+$date = date($_POST['date']);
+include "connectDB.php";
+$query = "SELECT WesternCourses.courseName AS 'western name',WesternCourses.courseNumber, WesternCourses.courseWeight AS 'western weight', OutsideCourses.courseName ,OutsideCourses.code, OutsideCourses.courseWeight, equivalentDate, officialName FROM WesternCourses, universities, Equivalent, OutsideCourses WHERE Equivalent.code = OutsideCourses.code and WesternCourses.courseNumber = Equivalent.courseNumber and OutsideCourses.uniqueNumber = universities.uniqueNumber and universities.uniqueNumber = Equivalent.uniqueNumber and Equivalent.equivalentDate <= '$date';";
+$result = mysqli_query($connection,$query);
+if (!$result) {
+     die("databases query failed.");
+}
+echo "<ol>";
+while ($row = mysqli_fetch_assoc($result)) {
+    foreach ($row as $name => $value) {
+    echo " $value<br />";
+}
+	echo "<br>";
+}
+
+echo "</ol>";
+?>
+</body>
+</html>
+
